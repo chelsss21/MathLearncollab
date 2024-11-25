@@ -1,0 +1,192 @@
+[gd_scene load_steps=19 format=3 uid="uid://cdd0igy6v3bt"]
+
+[ext_resource type="Texture2D" uid="uid://chpb7ehyb78s7" path="res://Untitled977 (1) (1).png" id="1_nem4m"]
+[ext_resource type="Texture2D" uid="uid://coq1n6sqntla6" path="res://1000055590.png" id="2_tabs5"]
+[ext_resource type="Texture2D" uid="uid://8oebjevidip3" path="res://ezgif-5-c4d3d42368.png" id="3_j6v31"]
+[ext_resource type="Texture2D" uid="uid://dx7c5tuxmwhu8" path="res://1000055703.png" id="4_nvuns"]
+[ext_resource type="Script" path="res://animation_player.gd" id="5_7sjom"]
+[ext_resource type="Texture2D" uid="uid://c78h4ntaimkhb" path="res://Untitled167_20241117221156.png" id="5_j7i3u"]
+[ext_resource type="Texture2D" uid="uid://befjm34gj48or" path="res://Untitled168_20241117231646__1_-removebg-preview.png" id="5_khpjm"]
+[ext_resource type="Texture2D" uid="uid://b65ch7cni51c0" path="res://Untitled167_20241117225902.png" id="6_av5w4"]
+[ext_resource type="Texture2D" uid="uid://dqs1gvjeuds5q" path="res://Untitled167_20241117215627.png" id="6_mrr2k"]
+[ext_resource type="Texture2D" uid="uid://cfissgx355vnu" path="res://Untitled167_20241117231208.png" id="7_fbwyk"]
+[ext_resource type="Texture2D" uid="uid://c6h6tv2je6gty" path="res://Untitled168_20241117232102-removebg-preview.png" id="7_nijlf"]
+[ext_resource type="Texture2D" uid="uid://bwu00am0i52bv" path="res://Untitled168_20241117232255-removebg-preview.png" id="9_nrs8p"]
+[ext_resource type="Texture2D" uid="uid://dt3mip60ndh8h" path="res://Untitled168_20241117232532-removebg-preview.png" id="11_aejp6"]
+
+[sub_resource type="GDScript" id="GDScript_n6hlt"]
+script/source = "extends Control
+
+func _on_back_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://Main Menu.tscn\")
+
+func _on_addition_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://Select Level for add.tscn\")
+
+func _on_subtraction_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://select level for subtrac.tscn\")
+	
+func _on_multiplication_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://select level for multi.tscn\")
+
+func _on_division_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://select level for divi.tscn\")
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c1gq1"]
+texture = ExtResource("1_nem4m")
+
+[sub_resource type="Animation" id="Animation_5w8ah"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_e7pac"]
+resource_name = "Select Mode"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 28]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mte2f"]
+_data = {
+"RESET": SubResource("Animation_5w8ah"),
+"Select Mode": SubResource("Animation_e7pac")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_n6hlt")
+
+[node name="Panel" type="Panel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_c1gq1")
+
+[node name="Back" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 74.0
+offset_right = 305.0
+offset_bottom = 224.0
+texture_normal = ExtResource("2_tabs5")
+texture_pressed = ExtResource("4_nvuns")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -140.0
+offset_right = 376.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Addition" type="TextureButton" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("6_mrr2k")
+texture_pressed = ExtResource("5_khpjm")
+
+[node name="Subtraction" type="TextureButton" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("5_j7i3u")
+texture_pressed = ExtResource("7_nijlf")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -368.0
+offset_top = -741.0
+offset_right = 385.0
+offset_bottom = -391.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="Multiplication" type="TextureButton" parent="HBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("6_av5w4")
+texture_pressed = ExtResource("9_nrs8p")
+
+[node name="Division" type="TextureButton" parent="HBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("7_fbwyk")
+texture_pressed = ExtResource("11_aejp6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="VBoxContainer"]
+position = Vector2(13, -385)
+scale = Vector2(1.34, 1.34)
+texture = ExtResource("3_j6v31")
+vframes = 30
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_mte2f")
+}
+script = ExtResource("5_7sjom")
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="HBoxContainer/Addition" to="." method="_on_addition_pressed"]
+[connection signal="pressed" from="HBoxContainer/Subtraction" to="." method="_on_subtraction_pressed"]
+[connection signal="pressed" from="HBoxContainer2/Multiplication" to="." method="_on_multiplication_pressed"]
+[connection signal="pressed" from="HBoxContainer2/Division" to="." method="_on_division_pressed"]
